@@ -5,10 +5,11 @@ import { MemberService } from '../../../core/services/member-service';
 import { ToastService } from '../../../core/services/toast-service';
 import { EditableMember, Member } from '../../../types/member';
 import { AccountService } from '../../../core/services/account-service';
+import { TimeAgoPipe } from '../../../core/pipes/time-ago-pipe';
 
 @Component({
   selector: 'app-memeber-profile',
-  imports: [DatePipe, FormsModule],
+  imports: [DatePipe, FormsModule, TimeAgoPipe],
   templateUrl: './memeber-profile.html',
   styleUrl: './memeber-profile.css',
 })
