@@ -13,11 +13,11 @@ namespace API.Controllers
         IPhotoService photoService) : BaseApiController
     {
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<Member>>> GetMembers(
+        public async Task<ActionResult<PaginatedResult<Member>>> GetMembers(
             [FromQuery] MemberParams memberParams)
         {
             memberParams.CurrentMemberId = User.GetMemberId();
-            
+
             return Ok(await memberRepository.GetMembersAsync(memberParams));
         }
 
@@ -53,7 +53,7 @@ namespace API.Controllers
 
             member.User.DisplayName = memberUpdateDto.DisplayName ?? member.User.DisplayName;
 
-            memberRepository.Update(member); //Optional (Mit: bekommen wir 204 No Content, ohne: bekommen wir 400 Bad Request Failed to Update - beide sind ok)
+            memberRepository.Update(member); //Optional Weil EF Core ein geladenes Objekt oft sowieso schon tracked. (Mit: bekommen wir 204 No Content, ohne: bekommen wir 400 Bad Request Failed to Update - beide sind ok)
 
             if (await memberRepository.SaveAllAsync()) return NoContent();
             return BadRequest("Failed to update member");
@@ -65,7 +65,7 @@ namespace API.Controllers
 
             var member = await memberRepository.GetMemberForUpdate(User.GetMemberId());
 
-            if (member == null) return BadRequest("Cannot updqate member");
+            if (member == null) return BadRequest("Cannot update member");
 
             var result = await photoService.UploadPhotoAsync(file);
 
@@ -102,7 +102,7 @@ namespace API.Controllers
 
             if (member.ImageUrl == photo?.Url || photo == null)
             {
-                return BadRequest("cannnot set main photo");
+                return BadRequest("Cannot set main photo");
             }
 
             member.ImageUrl = photo.Url;

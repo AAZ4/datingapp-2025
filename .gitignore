@@ -482,3 +482,9 @@ $RECYCLE.BIN/
 *.swp
 API/appsettings.json
 API/dating.db*
+
+# Projektdokumentation (nicht für PTW Lab)
+HANDOUT.html
+PROJECT_FILE_DIAGRAM.md
+PROJECT_GUIDE.md
+PROJECT_GUIDE.docx
