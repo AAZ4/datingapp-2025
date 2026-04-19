@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { LoginCreds, RegisterCreds, User } from '../../types/user';
 import { tap } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { LoginCreds, RegisterCreds, User } from '../../types/user';
 import { LikesService } from './likes-service';
 
 @Injectable({

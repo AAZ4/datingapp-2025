@@ -4,7 +4,6 @@ import { environment } from '../../environments/environment';
 import { EditableMember, Member, MemberParams, Photo } from '../../types/member';
 import { tap } from 'rxjs/internal/operators/tap';
 import { PaginatedResult } from '../../types/pagination';
-import { pipe } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -34,8 +33,11 @@ export class MemberService {
   }
 
   getMember(id: string) {
-    return this.http.get<Member>(this.baseUrl + 'members/' + id).pipe
-      (tap(member => this.member.set(member)));
+    return this.http.get<Member>(this.baseUrl + 'members/' + id).pipe(
+      tap(member => {
+        this.member.set(member)
+      })
+    )
   }
 
   getMemberPhotos(id: string) {
