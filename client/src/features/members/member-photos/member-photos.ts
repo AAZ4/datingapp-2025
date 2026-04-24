@@ -9,12 +9,12 @@ import { StarButton } from "../../../shared/star-button/star-button";
 import { DeleteButton } from '../../../shared/delete-button/delete-button';
 
 @Component({
-  selector: 'app-memeber-photos',
+  selector: 'app-member-photos',
   imports: [ImageUpload, StarButton, DeleteButton],
-  templateUrl: './memeber-photos.html',
-  styleUrl: './memeber-photos.css',
+  templateUrl: './member-photos.html',
+  styleUrl: './member-photos.css',
 })
-export class MemeberPhotos implements OnInit {
+export class MemberPhotos implements OnInit {
   protected memberService = inject(MemberService);
   protected accountService = inject(AccountService);
   private route = inject(ActivatedRoute);

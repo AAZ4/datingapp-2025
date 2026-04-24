@@ -8,12 +8,12 @@ import { AccountService } from '../../../core/services/account-service';
 import { TimeAgoPipe } from '../../../core/pipes/time-ago-pipe';
 
 @Component({
-  selector: 'app-memeber-profile',
+  selector: 'app-member-profile',
   imports: [DatePipe, FormsModule, TimeAgoPipe],
-  templateUrl: './memeber-profile.html',
-  styleUrl: './memeber-profile.css',
+  templateUrl: './member-profile.html',
+  styleUrl: './member-profile.css',
 })
-export class MemeberProfile implements OnInit, OnDestroy {
+export class MemberProfile implements OnInit, OnDestroy {
 
   @ViewChild('editForm') editForm?: NgForm;
   @HostListener('window:beforeunload', ['$event']) notification($event: BeforeUnloadEvent) {

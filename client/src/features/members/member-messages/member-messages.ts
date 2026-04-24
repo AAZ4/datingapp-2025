@@ -7,12 +7,12 @@ import { TimeAgoPipe } from '../../../core/pipes/time-ago-pipe';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-memeber-messages',
+  selector: 'app-member-messages',
   imports: [DatePipe, TimeAgoPipe, FormsModule],
-  templateUrl: './memeber-messages.html',
-  styleUrl: './memeber-messages.css',
+  templateUrl: './member-messages.html',
+  styleUrl: './member-messages.css',
 })
-export class MemeberMessages implements OnInit {
+export class MemberMessages implements OnInit {
   @ViewChild('messageEndRef') messageEndRef!: ElementRef;
   private messageService = inject(MessageService);
   private memberService = inject(MemberService);

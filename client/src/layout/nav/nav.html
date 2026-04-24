@@ -14,16 +14,17 @@
 
     <nav class="flex gap-3 my-2 uppercase text-lg text-white">
       @if (accountService.currentUser()) {
-      <a routerLink="/members" routerLinkActive="text-accent" [routerLinkActiveOptions]="{exact: true}">Matches</a>
-      <a routerLink="/lists" routerLinkActive="text-accent" [routerLinkActiveOptions]="{exact: true}">Lists</a>
-      <a routerLink="/messages" routerLinkActive="text-accent" [routerLinkActiveOptions]="{exact: true}">Messages</a>
+      <a routerLink="/members" routerLinkActive="text-accent" >Matches</a>
+      <a routerLink="/lists" routerLinkActive="text-accent">Lists</a>
+      <a routerLink="/messages" routerLinkActive="text-accent" >Messages</a>
+      <a *appHasRole="['Admin','Moderator']" routerLink="/admin" routerLinkActive="text-accent">Admin</a>
       }
       <a routerLink="/errors" routerLinkActive="text-accent">Errors</a>
     </nav>
     @if (busyService.BusyRequestCount() > 0) {
     <span class="loading loading-spinner text-accent"></span>
     }
-    
+
     <div class="flex align-middle ml-auto gap-3">
 
       <div class="dropdown mr-5 dropdown-end">

@@ -1,7 +1,7 @@
 import { CanDeactivateFn } from '@angular/router';
-import { MemeberProfile } from '../../features/members/memeber-profile/memeber-profile';
+import { MemberProfile } from '../../features/members/member-profile/member-profile';
 
-export const preventUnsavedChnagesGuard: CanDeactivateFn<MemeberProfile> = (component) => {
+export const preventUnsavedChangesGuard: CanDeactivateFn<MemberProfile> = (component) => {
   if (component.editForm?.dirty) {
     return confirm('Are you sure you want to continue? Any unsaved changes will be lost');
   }
