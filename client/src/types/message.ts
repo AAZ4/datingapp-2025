@@ -10,5 +10,4 @@ export type Message = {
   dateRead?: string
   messageSent: string
   currentUserSender?: boolean
-  cuurentUserSender?: boolean
 }

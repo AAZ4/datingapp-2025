@@ -1,18 +1,18 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { MemberService } from '../../../core/services/member-service';
+import { ActivatedRoute } from '@angular/router';
 import { Member, Photo } from '../../../types/member';
 import { ImageUpload } from "../../../shared/image-upload/image-upload";
 import { AccountService } from '../../../core/services/account-service';
 import { User } from '../../../types/user';
 import { StarButton } from "../../../shared/star-button/star-button";
-import { DeleteButton } from '../../../shared/delete-button/delete-button';
+import { DeleteButton } from "../../../shared/delete-button/delete-button";
 
 @Component({
   selector: 'app-member-photos',
   imports: [ImageUpload, StarButton, DeleteButton],
   templateUrl: './member-photos.html',
-  styleUrl: './member-photos.css',
+  styleUrl: './member-photos.css'
 })
 export class MemberPhotos implements OnInit {
   protected memberService = inject(MemberService);
@@ -25,9 +25,7 @@ export class MemberPhotos implements OnInit {
     const memberId = this.route.parent?.snapshot.paramMap.get('id');
     if (memberId) {
       this.memberService.getMemberPhotos(memberId).subscribe({
-        next: photos => {
-          this.photos.set(photos);
-        }
+        next: photos => this.photos.set(photos)
       })
     }
   }
@@ -44,16 +42,16 @@ export class MemberPhotos implements OnInit {
         }
       },
       error: error => {
-        console.error('Error uploading photo:', error);
+        console.log('Error uploading image: ', error);
         this.loading.set(false);
       }
     })
   }
 
-  onSetMainPhoto(photo: Photo) {
+  setMainPhoto(photo: Photo) {
     this.memberService.setMainPhoto(photo).subscribe({
       next: () => {
-        this.setMainLocalPhoto(photo);
+        this.setMainLocalPhoto(photo)
       }
     })
   }
@@ -61,7 +59,7 @@ export class MemberPhotos implements OnInit {
   deletePhoto(photoId: number) {
     this.memberService.deletePhoto(photoId).subscribe({
       next: () => {
-        this.photos.update(photos => photos.filter(x => x.id !== photoId));
+        this.photos.update(photos => photos.filter(x => x.id !== photoId))
       }
     })
   }

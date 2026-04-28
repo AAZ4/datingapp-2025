@@ -38,7 +38,16 @@ export class ImageUpload {
 
     if (event.dataTransfer?.files.length) {
       const file = event.dataTransfer.files[0];
-      this.prviewImage(file);
+      this.previewImage(file);
+      this.fileToUpload = file;
+    }
+  }
+
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files?.length) {
+      const file = input.files[0];
+      this.previewImage(file);
       this.fileToUpload = file;
     }
   }
@@ -54,7 +63,7 @@ export class ImageUpload {
     }
   }
 
-  private prviewImage(file: File) {
+  private previewImage(file: File) {
     const reader = new FileReader();
     reader.onload = (e) => {
       this.imageSrc.set(e.target?.result);

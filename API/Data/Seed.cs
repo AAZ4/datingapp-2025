@@ -49,6 +49,7 @@ public class Seed
 
             user.Member.Photos.Add(new Photo
             {
+                IsApproved = true,
                 Url = member.ImageUrl!,
                 MemberId = member.Id
             });
