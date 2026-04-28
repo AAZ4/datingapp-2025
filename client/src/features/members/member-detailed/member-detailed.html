@@ -4,8 +4,11 @@
     <img src="{{member.imageUrl || '/user.png'}}" alt="image of member" class="rounded-full mx-10 mt-3 object-cover">
     <div class="card-body">
       <div class="flex flex-col items-center">
-        <div class="flex text-2xl text-primary">
+        <div class="flex text-2xl text-primary items-center">
           {{member.displayName}}, {{member.dateOfBirth | age}}
+          @if (presenceService.onlineUsers().includes(member.id)) {
+                    <span class="status status-success status-xl ml-3"></span>
+                    }
         </div>
         <div>
 
@@ -36,7 +39,11 @@
       }
     </div>
     <div class="divider"></div>
-    <router-outlet class="h-full"></router-outlet>
+    <div class="h-full">
+       <router-outlet/>
+    </div>
+
+
   </div>
 </div>
 }@else {
