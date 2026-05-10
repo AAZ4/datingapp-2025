@@ -1,4 +1,3 @@
-using System;
 using API.DTOs;
 using API.Entities;
 using API.Extensions;
@@ -87,8 +86,8 @@ public class MessageRepository(AppDbContext context) : IMessageRepository
 
     public async Task RemoveConnection(string connectionId)
     {
-       await context.Connections
-        .Where(x => x.ConnectionId == connectionId)
-        .ExecuteDeleteAsync();
+        await context.Connections
+         .Where(x => x.ConnectionId == connectionId)
+         .ExecuteDeleteAsync();
     }
 }
