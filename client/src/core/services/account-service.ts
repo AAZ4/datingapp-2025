@@ -57,7 +57,7 @@ export class AccountService {
             this.logout();
           }
         })
-    }, 5 * 60 * 1000) // Refresh every 5 minutes
+    }, 14 * 24 * 60 * 1000) // 14 days
   }
 
   setCurrentUser(user: User) {
@@ -68,7 +68,7 @@ export class AccountService {
       this.presenceService.createHubConnection(user);
     }
   }
-  
+
   logout() {
     this.http.post(this.baseUrl + 'account/logout', {}, { withCredentials: true }).subscribe({
       next: () => {
